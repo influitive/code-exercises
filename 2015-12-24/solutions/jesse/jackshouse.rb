@@ -1,5 +1,6 @@
 class JacksHouse
-	DATA = ['the horse and the hound and the horn that belonged to',
+	def data
+		@data ||= ['the horse and the hound and the horn that belonged to',
 	  'the farmer sowing his corn that kept',
 	  'the rooster that crowed in the morn that woke',
 	  'the priest all shaven and shorn that married',
@@ -11,13 +12,14 @@ class JacksHouse
 	  'the rat that ate',
 	  'the malt that lay in',
 	  'the house that Jack built']
+	end
 
 	def line number
-		DATA.last(number)
+		data.last(number)
 	end
 
 	def output
-		(1..DATA.length).map do |i|
+		(1..data.length).map do |i|
 			puts line(i)
 			puts '-----'
 		end
@@ -26,8 +28,14 @@ end
 
 class EchoHouse < JacksHouse
 	def line number
-		DATA.last(number).map do |l|
+		data.last(number).map do |l|
 			"#{l} #{l}"
 		end
+	end
+end
+
+class RandomHouse < JacksHouse
+	def data
+		@data ||= super.shuffle
 	end
 end
