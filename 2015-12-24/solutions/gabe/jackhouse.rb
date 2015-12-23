@@ -35,11 +35,21 @@ class DoublePoem < Poem
   end
 end
 
-
-class RandomPoem < Poem
+module Randomized
   def lines
-    @lines ||= LINES.shuffle
+    @lines ||= self.class.const_get(:LINES).shuffle
   end
 end
 
-RandomPoem.new.recite
+
+class RandomPoem < Poem
+  include Randomized
+end
+
+
+
+class RandomDoublePoem < DoublePoem
+  include Randomized
+end
+
+RandomDoublePoem.new.recite
