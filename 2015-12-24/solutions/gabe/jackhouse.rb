@@ -37,7 +37,7 @@ end
 
 module Randomized
   def lines
-    @lines ||= self.class.const_get(:LINES).shuffle
+    @lines ||= super.shuffle
   end
 end
 
