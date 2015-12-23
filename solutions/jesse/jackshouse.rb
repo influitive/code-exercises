@@ -12,14 +12,22 @@ class JacksHouse
 	  'the malt that lay in',
 	  'the house that Jack built']
 
+	def line number
+		DATA.last(number)
+	end
+
 	def output
-		acc = []
-		DATA.each_with_index do |line, i|
-			current = DATA.length - i
-			acc.unshift DATA[current]
-			puts acc
+		(1..DATA.length).map do |i|
+			puts line(i)
 			puts '-----'
 		end
-		nil
+	end
+end
+
+class EchoHouse < JacksHouse
+	def line number
+		DATA.last(number).map do |l|
+			"#{l} #{l}"
+		end
 	end
 end
