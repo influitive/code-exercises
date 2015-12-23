@@ -14,10 +14,20 @@ class Poem
 
   def recite
     LINES.length.times do |i|
-      puts 'This is ' + LINES[-(i+1)..-1].join(' '), ' '
+      puts 'This is ' + lines(i).join("\n"), ' '
     end
+  end
+
+
+  def lines(verse)
+    LINES[-(verse+1)..-1]
   end
 end
 
+class DoublePoem < Poem
+  def lines(verse)
+    super.map{|l| [l, l] }.flatten
+  end
+end
 
-Poem.new.recite
+DoublePoem.new.recite
