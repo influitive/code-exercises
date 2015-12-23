@@ -23,3 +23,7 @@ New Feature:
 
 New Feature:
   EchoRandomHouse
+
+Future reading:
+  Sandi Metz: Nothing is Something
+  https://www.youtube.com/watch?v=OMPfEXIlTVE
