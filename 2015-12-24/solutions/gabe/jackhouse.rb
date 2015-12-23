@@ -13,21 +13,33 @@ class Poem
     'the house that Jack built' ]
 
   def recite
-    LINES.length.times do |i|
-      puts 'This is ' + lines(i).join("\n"), ' '
+    lines.length.times do |i|
+      puts 'This is ' + verse(i).join("\n"), ' '
     end
   end
 
+  private
 
-  def lines(verse)
-    LINES[-(verse+1)..-1]
+  def verse(i)
+    LINES[-(i+1)..-1]
+  end
+
+  def lines
+    @lines ||= LINES
   end
 end
 
 class DoublePoem < Poem
-  def lines(verse)
+  def verse(i)
     super.map{|l| [l, l] }.flatten
   end
 end
 
-DoublePoem.new.recite
+
+class RandomPoem < Poem
+  def lines
+    @lines ||= LINES.shuffle
+  end
+end
+
+RandomPoem.new.recite
