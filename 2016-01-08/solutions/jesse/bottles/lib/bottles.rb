@@ -8,7 +8,7 @@ class Bottles
     upper.downto(lower).map { |i| verse(i) }.join("\n")
   end
 
-  def itOrOne number
+  def it_or_one number
     number == 1 ? 'it' : 'one'
   end
   
@@ -27,7 +27,7 @@ class Bottles
   end
 
   def verse_three number
-    number > 0 ? "Take #{itOrOne(number)} down and pass it around, " : "Go to the store and buy some more, "
+    number > 0 ? "Take #{it_or_one(number)} down and pass it around, " : "Go to the store and buy some more, "
   end
 
   def verse(number)
