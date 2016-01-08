@@ -28,7 +28,7 @@ class CoolHouse
   end
 
   def phrase(number)
-    parts(number).join(" ")
+    formatter.format(parts(number)).join(" ")
   end
 
   def parts(number)
