@@ -45,6 +45,3 @@ DEPENDENCIES
   guard
   guard-shell
   minitest (~> 5.8)
-
-BUNDLED WITH
-   1.10.6
