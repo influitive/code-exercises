@@ -9,33 +9,37 @@ class Bottles
   end
 
   def verse(number)
-    case number
-      when 0
-        "No more #{pluralize(number)} of beer on the wall, #{no_more(number + 1)} #{pluralize(number)} of beer.\nGo to the store and buy some more, #{no_more(number)} #{pluralize(number - 1)} of beer on the wall.\n"
-      else
-        "#{number} #{pluralize(number)} of beer on the wall, #{no_more(number + 1)} #{pluralize(number)} of beer.\nTake #{it_or_one(number)} down and pass it around, #{no_more(number)} #{pluralize(number - 1)} of beer on the wall.\n"
+    "#{quantity(number).capitalize} #{noun(number)} of beer on the wall, " <<
+    "#{quantity(number)} #{noun(number)} of beer.\n" <<
+    "#{action(number)}, " <<
+    "#{quantity(remaining(number))} #{noun(number - 1)} of beer on the wall.\n"
+  end
+
+  def action(number)
+    if number == 0
+      "Go to the store and buy some more"
+    else
+      "Take #{pronoun(number)} down and pass it around"
     end
   end
 
-  def no_more(number)
-    if number == 0
+  def remaining(number)
+    if number <= 0
       99
-    elsif number == 1
-      "no more"
     else
       number - 1
     end
   end
 
-  def new_no_more(number)
-    if number == 0
-      "No more"
+  def quantity(number)
+    if number <= 0
+      "no more"
     else
-      number
+      number.to_s
     end
   end
 
-  def pluralize(number)
+  def noun(number)
     if number == 1
       "bottle"
     else
@@ -43,7 +47,7 @@ class Bottles
     end
   end
 
-  def it_or_one(number)
+  def pronoun(number)
     if number == 1
       "it"
     else
